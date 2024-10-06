@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Menu";
+
+    // This information is organized in a dictionary.
+    // It is Enumerable (countable) and loopable
+    // Note: Think about a database structure to store this information.
+    // What tables would you use?
+    // What columns would each table have?
+    // How would you refer to a choice of pizza or topping?
+
+    // creating a dictionary with items
+    // Note: What if sizes had more attributes we wanted to express?
+    // i.e. diameter, number of slices
+    Dictionary<string, decimal> PizzaSizes = new Dictionary<string, decimal>()
+    {
+        { "Small", 10.50M },
+        { "Medium", 13.50M },
+        { "Large", 15.50M }
+    };
+
+    // Can add dictionary items by their key
+    // Note: What if a topping had more attributes we wanted to express?
+    // i.e. vegetarian, non-vegetarian, premium, regular, free, calories etc.
+    Dictionary<string, decimal> PizzaToppings = new Dictionary<string, decimal>();
+    PizzaToppings["Tomatoes"] = 0.50M;
+    PizzaToppings["Broccoli"] = 0.50M;
+    PizzaToppings["Pineapple"] = 0.50M;
+    PizzaToppings["Green Beans"] = 0.50M;
+    PizzaToppings["Ham"] = 1.50M;
+    PizzaToppings["Salmon"] = 1.50M;
+    PizzaToppings["Anchovies"] = 1.50M;
+    PizzaToppings["Hot Sauce"] = 0.00M;
+
+    Dictionary<int, string> OrderDrinks = new Dictionary<int, string>();
+    OrderDrinks.Add(0, "No Drink");
+    OrderDrinks.Add(1, "Water");
+    OrderDrinks.Add(2, "Soda");
+    OrderDrinks.Add(3, "Milk");
+
+    
+}
+
+<style>
+    @{
+        // you can render server content into any output, even CSS / JS!
+        int spacing = 10;
+    }
+    .form-group{ margin-bottom:@(spacing)px;}
+</style>
+
+<h1>Pizza Menu</h1>
+
+<form method="POST" action="/Pizza/Order">
+    <div class="form-group">
+        <label>Customer Name:</label>
+        <input type="text" name="CustomerName"/>
+    </div>
+    <div class="form-group">
+        <label>Pizza Size:</label>
+        <select name="PizzaSize">
+        @foreach (KeyValuePair<string,decimal> PizzaSize in PizzaSizes)
+        {
+            <option value="@PizzaSize.Key">@PizzaSize.Key - $@PizzaSize.Value</option>
+        }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Toppings:</label>
+        @foreach (KeyValuePair<string, decimal> PizzaTopping in PizzaToppings)
+        {
+            <div>
+                <input type="checkbox" name="PizzaToppings" value="@PizzaTopping.Key" id="@PizzaTopping.Key" />
+                <label for="@PizzaTopping.Key">$@PizzaTopping.Value @PizzaTopping.Key</label>
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <p>Choose a <span style="font-style:italic;">free</span> drink!</p>
+        @foreach (KeyValuePair<int,string> OrderDrink in OrderDrinks )
+        {
+            <div>
+                <label for="OrderDrink_@OrderDrink.Value">@OrderDrink.Value</label>
+                <input type="radio" name="OrderDrink" id="OrderDrink_@OrderDrink.Value" value="@OrderDrink.Value" />
+            </div>
+        }
+        
+    </div>
+    <div class="form-group">
+        @{
+            // NOTE: valid discount codes will not be revealed to the browser
+            // It's still not a good idea to include sensitive information as a comment.
+            // Intended codes :
+            // YUMPIZZA 10%
+            // PIE4ME 15%
+        }
+        <label>Discount Code:</label>
+        <input type="text" name="OrderCode" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Order Now!" />
+    </div>
+</form>
+

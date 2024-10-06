@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h1>Pizza Store</h1>
+<!-- This is an HTML comment. It is visible to the browser! -->
+@{
+    //This is a server comment. It is invisible to the browser!
+
+    //These variables will be used for output
+    DateTime Founded = DateTime.Parse("2024-Oct-06");
+    DateTime CurrentDate = DateTime.Now;
+    int DaysOld = Convert.ToInt32(Math.Round((CurrentDate - Founded).TotalDays,0));
+
+    string OwnerName = "Gary";
+    Dictionary<string, string> OwnerPronouns = new Dictionary<string, string>();
+    OwnerPronouns.Add("Subjective","he");
+    OwnerPronouns.Add("Objective", "him");
+    OwnerPronouns.Add("Possessive", "his");
+    List<string> FavoriteToppings = new List<string>() { "Anchovies", "Ham", "Green Beans", "Salmon" };
+}
+<p>Welcome to the pizza store! It was founded in @Founded.ToString("yyyy-MM-dd"). The Pizza Store is @DaysOld days old.</p>
+<p>@OwnerName has loved pizza since @OwnerPronouns["Subjective"] was small. These are @OwnerPronouns["Possessive"] favorite toppings:</p>
+<ul>
+    @foreach (string Topping in FavoriteToppings)
+    {
+        <li>@Topping</li>
+    }
+</ul>
+@{
+    // Content can be rendered in any part of the output. It does not have to only be within HTML tags.
+    string orderlink = "/Pizza/Menu";
+}
+<p><a href="@orderlink">Order a delicious pizza today!</a></p>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Thank you for your order!</h1>
+<h2>Summary:</h2>
+<div>
+    <div>Name: @ViewData["CustomerName"]</div>
+    <div>Pizza Size: @ViewData["PizzaSize"]</div>
+    <div>Toppings: 
+        
+        <ul>
+        @foreach(string Topping in (List<string>) ViewData["Toppings"])
+        {
+            <li>@Topping</li>
+        }
+        </ul>
+    </div>
+    <div>Drink: @ViewData["OrderDrink"]</div>
+</div>
+<hr />
+<div>
+    <div>Before Discount: $@ViewData["PreDiscountSubtotal"]</div>
+    <div>Order Code: @ViewData["OrderCode"]</div>
+    <div>Total Discount: $@ViewData["TotalDiscount"]</div>
+    <div>Sub Total: $@ViewData["OrderSubTotal"]</div>
+    <div>@ViewData["OrderTaxName"] @ViewData["TaxRate"]%:  $@ViewData["OrderTaxAmt"] </div>
+    <div>Order Total: $@ViewData["OrderTotal"]</div>
+</div>
+
+
+
+
+
+
+
+
+
+
