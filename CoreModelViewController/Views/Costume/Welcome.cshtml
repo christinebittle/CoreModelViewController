@@ -1,0 +1,14 @@
+﻿
+@{
+    // This is a server (C#) comment
+    string Today = DateTime.Now.ToString("yyyy-MM-dd");
+    string CourseCode = "5125";
+}
+<!-- This is a client (html) comment -->
+<h1>Costume Store @CourseCode</h1>
+<p>Welcome to our store! The date is @Today</p>
+@{
+    string StorePath = "/Costume/Store";
+
+}
+<a href="@StorePath">Order a Costume!</a>

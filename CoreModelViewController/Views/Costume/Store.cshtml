@@ -1,0 +1,47 @@
+﻿<h1>Order a Costume!</h1>
+
+<form method="POST" action="/Costume/OrderSummary">
+    <div>
+        <label for="CustomerName">Order Name:</label>
+    </div>
+    <div>
+        <input type="text" id="CustomerName" name="CustomerName" />
+    </div>
+    <div>
+        <label for="CostumeType">Costume Type:</label>
+    </div>
+    <div>
+        @{
+            //stores associated information to costumename-price
+            //Dictionary<string,decimal> costumes ["Vampire"->50.99,"Ghost"->30.99,..]
+
+            Dictionary<string, decimal> Costumes = new Dictionary<string, decimal>()
+            {
+                { "Vampire", 50.99m },
+                { "Ghost", 30.99m },
+                { "Cat", 40.99m },
+            };
+
+        }
+
+        <select name="CostumeType" id="CostumeType">
+            @foreach (KeyValuePair<string,decimal> Costume in Costumes)
+            {
+                <option value="@Costume.Key">@Costume.Key ($@Costume.Value)</option>
+
+            }
+        </select>
+    </div>
+    <div>
+        <label for="CostumeSize">Costume Size:</label>
+    </div>
+    <div>
+        <select name="CostumeSize" id="CostumeSize">
+            <option value="Kid">Kids (+$0)</option>
+            <option value="Adult">Adult (+$10)</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Order Now" />
+    </div>
+</form>
