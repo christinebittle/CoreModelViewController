@@ -1,0 +1,13 @@
+﻿
+@{
+    DateTime CurrentDate = DateTime.Now;
+    string Today = CurrentDate.ToString("yyyy-MM-dd");
+}
+<p>Welcome to the halloween candy store! Today is @Today</p>
+
+@{
+    string StorePath = "/Candy/Shop";
+    
+}
+
+<a href="@StorePath">Shop Now</a>

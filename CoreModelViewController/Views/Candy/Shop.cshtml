@@ -1,0 +1,58 @@
+﻿
+@{
+    // A C# / web server comment!
+    string StoreName = "Spooky Candy";
+
+}
+<!-- This is an HTML / client comment -->
+<h1>Choose an order for @StoreName</h1>
+<p>Choose the options for your candy order:</p>
+
+<form method="POST" action="/Candy/Checkout">
+    <div>
+        <label for="OrderAddress">Address</label>
+    </div>
+    <div>
+        <input type="text" id="OrderAddress" name="OrderAddress" />
+    </div>
+    <div>
+        <label>What kind of candy do you want?</label>
+    </div>
+    <div>
+        <div>
+            <label>Type:</label>
+        </div>
+        <div>
+            @{
+                // C# Dictionary Example
+                // associate the name of the candy bar to its price
+                // Dictionary<string,decimal> = ["Snackers"->3.00, "KatKit"->2.50, "Jupiters"->2.75]
+
+                Dictionary<string, decimal> CandyTypes = new Dictionary<string, decimal>()
+                {
+                    {"Snackers",3.00m}, // Key Value Pair
+                    {"KatKit",2.50m},
+                    {"Jupiters",2.75m},
+                };
+
+            }
+
+            <select name="CandyType" id="CandyType">
+                @foreach (KeyValuePair<string,decimal> item in CandyTypes)
+                {
+                    <option value="@item.Key">@item.Key ($@item.Value) ea</option>
+                }
+            </select>
+        </div>
+        
+    </div>
+    <div>
+        <label>How many pieces of candy do you want?</label>
+    </div>
+    <div>
+        <input type="number" id="CandyNumPieces" name="CandyNumPieces"/>
+    </div>
+    <div>
+        <input type="submit" value="Place Order"/>
+    </div>
+</form>
