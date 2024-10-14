@@ -1,8 +1,8 @@
 # Core MVC
-This project uses Views and MVC controllers to receive a pizza order for an online store.
+This project uses Models, Views, and Controllers to create an MVC application for an online store.
 
 ## Test your understanding!
-- Use your browser developer tools Element Inspector + View Page Source to look at the *rendered* HTML output for /Pizza/Welcome, /Pizza/Menu, and /Pizza/Order
-- Use your browser developer tools Network to look at the HTTP requests GET /Pizza/Welcome, GET Pizza/Menu, POST /Pizza/Order
-- Observe Debugging messages in server with View > Output on POST /Pizza/Order
-- Use similar techniques to make your own online store!
+- Observe the definitions in Models/PizzaOrder.cs, including their private fields and public property accessors
+- Observe how information is SET in the PizzaController Order Method
+- Observe how information is GET in Views/Pizza/Order.cshtml
+- Use the example as a reference to create your own Model!
