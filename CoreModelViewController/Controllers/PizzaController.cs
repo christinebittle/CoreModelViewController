@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CoreModelViewController.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace CoreModelViewController.Controllers
@@ -75,20 +76,20 @@ namespace CoreModelViewController.Controllers
 
             decimal PreDiscountSubtotal = OrderSubtotal;
 
-            decimal TotalDiscount = 0M;
+            decimal OrderDiscountTotal = 0M;
             // if the received discount code matches our valid codes
             if (ValidCodes.ContainsKey(OrderCode))
             {
-                
-                TotalDiscount = Math.Round((OrderSubtotal * (ValidCodes[OrderCode] / 100M)), 2);
+
+                OrderDiscountTotal = Math.Round((OrderSubtotal * (ValidCodes[OrderCode] / 100M)), 2);
                 Debug.WriteLine("discount applied");
-                Debug.WriteLine(TotalDiscount);
+                Debug.WriteLine(OrderDiscountTotal);
                 Debug.WriteLine((ValidCodes[OrderCode] / 100M));
             }
 
             //note: apply discounts before tax
             //note: example is intended to be realistic, but does not necessarily reflect best practices for order / tax calculations.
-            OrderSubtotal -= TotalDiscount;
+            OrderSubtotal -= OrderDiscountTotal;
 
             //What if we wanted to store taxes in a more structured way?
             //i.e. the pizza store existed in different provinces?
@@ -98,23 +99,24 @@ namespace CoreModelViewController.Controllers
 
             decimal OrderTotal = OrderSubtotal + OrderTaxAmt;
 
-            ViewData["CustomerName"] = CustomerName;
-            ViewData["PizzaSize"] = PizzaSize;
-            ViewData["Toppings"] = PizzaToppings;
-            ViewData["OrderDrink"] = OrderDrink;
-            ViewData["OrderCode"] = OrderCode;
-            ViewData["TotalDiscount"] = TotalDiscount;
+            // defined in Models/PizzaOrder.cs
+            // calling the setter property accessors of the Pizza Order Object
+            PizzaOrder PizzaOrder = new PizzaOrder();
+            PizzaOrder.CustomerName = CustomerName;
+            PizzaOrder.PizzaSize = PizzaSize;
+            PizzaOrder.PizzaToppings = PizzaToppings;
+            PizzaOrder.OrderDrink = OrderDrink;
+            PizzaOrder.OrderCode = OrderCode;
+            PizzaOrder.OrderDiscountTotal = OrderDiscountTotal;
+            PizzaOrder.OrderPreTotal = PreDiscountSubtotal;
+            PizzaOrder.OrderSubTotal = OrderSubtotal;
+            PizzaOrder.OrderTaxName = OrderTaxName;
+            PizzaOrder.OrderTaxRate = TaxRate;
+            PizzaOrder.OrderTaxAmt = OrderTaxAmt;
+            PizzaOrder.OrderTotal = OrderTotal;
 
-            ViewData["PreDiscountSubtotal"] = PreDiscountSubtotal;
-            ViewData["OrderSubTotal"] = OrderSubtotal;
-            ViewData["OrderTaxName"] = OrderTaxName;
-            ViewData["TaxRate"] = TaxRate;
-            ViewData["OrderTaxAmt"] = OrderTaxAmt;
-            ViewData["OrderTotal"] = OrderTotal;
-
-            
             // routes to /Views/Pizza/Order.cshtml
-            return View();
+            return View(PizzaOrder);
         }
 
     }
