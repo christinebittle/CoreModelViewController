@@ -1,6 +1,8 @@
-﻿
+﻿@model CoreModelViewController.Models.CandyOrder
+
 <h1>Summary</h1>
-<p>Address of Order: @ViewData["OrderAddress"]</p>
-<p>Pieces of Candy: @ViewData["CandyNumPieces"]</p>
-<p>Candy Type: @ViewData["CandyType"]</p>
-<p>Checkout Amount: $@ViewData["OrderTotal"]</p>
+<p>Name on Order: @Model.OrderName</p>
+<p>Address of Order: @Model.OrderAddress</p>
+<p>Pieces of Candy: @Model.CandyNumPieces</p>
+<p>Candy Type: @Model.CandyType</p>
+<p>Checkout Amount: $@Model.OrderTotal</p>

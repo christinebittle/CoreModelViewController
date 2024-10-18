@@ -1,0 +1,13 @@
+﻿@model List<CoreModelViewController.Models.CandyOrder>
+
+<h1>My Orders</h1>
+
+<p>The number of orders is @Model.Count</p>
+
+<ul>
+@foreach(CandyOrder order in Model)
+{
+    <li>@order.OrderName $@order.OrderTotal @order.CandyNumPieces &times; @order.CandyType</li>
+
+}
+</ul>
