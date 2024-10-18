@@ -1,5 +1,9 @@
-﻿<h1>Thanks for your Order!</h1>
-<p>Name: @ViewData["CustomerName"]</p>
-<p>Costume Type: @ViewData["CostumeType"]</p>
-<p>Size: @ViewData["CostumeSize"]</p>
-<p>Order Total: $@ViewData["OrderTotal"]</p>
+﻿@model CoreModelViewController.Models.CostumeOrder
+
+<h1>Thanks for your Order!</h1>
+<p>Name: @Model.CustomerName</p>
+<p>Costume Type: @Model.CostumeType</p>
+<p>Size: @Model.CostumeSize</p>
+<p>Order Total: $@Model.OrderTotal</p>
+<hr />
+<p>Notes: @Model.OrderNote</p>

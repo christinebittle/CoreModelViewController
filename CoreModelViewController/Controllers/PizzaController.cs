@@ -103,6 +103,8 @@ namespace CoreModelViewController.Controllers
             // calling the setter property accessors of the Pizza Order Object
             PizzaOrder PizzaOrder = new PizzaOrder();
             PizzaOrder.CustomerName = CustomerName;
+            
+
             PizzaOrder.PizzaSize = PizzaSize;
             PizzaOrder.PizzaToppings = PizzaToppings;
             PizzaOrder.OrderDrink = OrderDrink;

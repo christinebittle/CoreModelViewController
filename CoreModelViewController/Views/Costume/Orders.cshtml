@@ -1,0 +1,12 @@
+﻿@model List<CoreModelViewController.Models.CostumeOrder>
+
+<p>This page should show the costume orders</p>
+
+<p>There should be @Model.Count orders to show</p>
+
+<ul>
+@foreach(CoreModelViewController.Models.CostumeOrder order in Model)
+{
+    <li>@order.CustomerName $@order.OrderTotal</li>
+}
+</ul>
