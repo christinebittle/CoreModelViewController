@@ -1,0 +1,46 @@
+﻿@{
+    // We could use server rendering to make our job easier for building this page
+
+    // For example, can have a variable that stores the values for the chocolate options
+    // Then, we can use server rendering to produce the markup for us
+    // KEY   VAL
+    // "M" - "Medium ($15)"
+    Dictionary<String, String> ChocolateSizes = new Dictionary<String,String>();
+    ChocolateSizes["S"] = "Small ($10)";
+    ChocolateSizes["M"] = "Medium ($15)";
+    ChocolateSizes["L"] = "Large ($17)";
+}
+
+<h1>Order Now</h1>
+
+<form action="/Chocolate/OrderSummary" method="POST">
+    <div>
+        <label for="CustomerName">Name:</label>
+        <input type="text" name="CustomerName" id="CustomerName"/>
+    </div>
+    <div>
+        <label for="ChocolateBoxSize">Box Size:</label>
+        <select name="ChocolateBoxSize" id="ChocolateBoxSize">
+            @foreach(KeyValuePair<String,String> ChocolateSize in ChocolateSizes){
+                <option value="@ChocolateSize.Key">@ChocolateSize.Value</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="ChocolateBoxColour">Colour:</label>
+       
+        <input type="radio" name="ChocolateBoxColour" value="Pink" id="ChocolateBoxColor_Pink" />
+        <label for="ChocolateBoxColor_Pink">Pink</label>
+
+        <input type="radio" name="ChocolateBoxColour" value="Red" id="ChocolateBoxColor_Red" />
+        <label for="ChocolateBoxColor_Red">Red</label>
+
+        <input type="radio" name="ChocolateBoxColour" value="White" id="ChocolateBoxColor_White" />
+        <label for="ChocolateBoxColor_White">White</label>
+        
+    </div>
+    <div>
+        <input type="submit" value="Order Now" />
+
+    </div>
+</form>
