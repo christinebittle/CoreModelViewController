@@ -1,0 +1,16 @@
+﻿
+@{
+    // the owner of the flower store
+    // This is an instruction to the server to store the name of the owner
+    string OwnerName = "Sean";
+    DateTime Today = DateTime.Now;
+    string Colour = "blue";
+    string link = "Order";
+}
+
+<h1>Welcome to our valentines' flower store!</h1>
+<p style="color:@Colour">This is content, with color changed</p>
+<p>This is a sentence. The current date is @Today.ToString("yyyy-MM-dd"). The owner is @OwnerName</p>
+
+<a href="/Flower/@link">Buy some flowers now!</a><br />
+<a href="/Flower/Terms">Terms and Conditions</a>

@@ -1,0 +1,27 @@
+﻿@model CoreModelViewController.Models.StoreLegal
+
+@{
+    string label = "Server Render";
+}
+<span>@label</span>
+
+<h2>Terms and Conditions Version# @Model.Version</h2>
+<ol>
+    @foreach(string Term in Model.Terms){
+        <li>@Term</li>
+    }
+</ol>
+<p>Last Updated : @Model.LastUpdated.ToString("yyyy-MM-dd")</p>
+
+
+
+
+
+
+
+
+<span id="mylabel"></span>
+<script>
+    document.getElementById("mylabel").innerHTML = "Client Render";
+
+</script>

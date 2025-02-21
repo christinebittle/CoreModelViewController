@@ -1,0 +1,14 @@
+﻿@model CoreModelViewController.Models.StoreLegal
+
+<h2>Terms and Conditions</h2>
+
+<em>Last Updated: @Model.LastUpdated</em>
+
+<ul>
+    @foreach(string Term in Model.Terms)
+    {
+        <li>@Term</li>
+    }
+</ul>
+
+<span>Version Number #@Model.LastUpdated.ToString("yyyy-MM-dd")</span>

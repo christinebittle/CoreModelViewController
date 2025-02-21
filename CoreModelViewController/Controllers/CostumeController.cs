@@ -23,6 +23,25 @@ namespace CoreModelViewController.Controllers
             return View();
         }
 
+        // GET : /Costume/Terms -> A webpage which tells the user the terms of the costume store
+        public IActionResult Terms()
+        {
+            //model to represent legal information for our store
+            StoreLegal CostumeLegal = new StoreLegal();
+
+            CostumeLegal.Terms = new List<string>();
+            CostumeLegal.Terms.Add("Can be returned if unopened");
+            CostumeLegal.Terms.Add("Stores customer/ address information for delivery");
+            CostumeLegal.Terms.Add("Stores order receipts for invoicing");
+
+            CostumeLegal.Version = 8;
+            CostumeLegal.LastUpdated = DateTime.Parse("2020-07-19");
+
+
+            // Direct to /Views/Costume/Terms.cshtml
+            return View(CostumeLegal);
+        }
+
         // GET: /Costume/Orders -> A webpage which shows multiple costume orders
         [HttpGet]
         public IActionResult Orders()

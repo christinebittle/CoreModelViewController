@@ -1,0 +1,13 @@
+﻿@model CoreModelViewController.Models.FlowerOrder
+
+<h1>Order Summary:</h1>
+
+<p>You ordered @Model.NumFlowers flowers</p>
+<p>The flower type is @Model.FlowerType</p>
+<p>The flowers will be sent to @Model.DeliveryAddress</p>
+
+<hr />
+
+<p>The subtotal is @Model.SubTotal</p>
+<p>The tax is @Model.TaxAmount @Model.TaxLabel</p>
+<p>The final total is @Model.OrderTotal</p>

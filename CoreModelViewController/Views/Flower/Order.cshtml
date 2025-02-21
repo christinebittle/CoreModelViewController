@@ -1,0 +1,50 @@
+﻿
+@{
+    // It would be nice if we had a way to organize the flower type with their price
+    // Key is the flower type, value is the cost of the flower per unit
+    // i.e.
+    // KEY      VAL
+    // ROSES    4
+    // HINT: very useful for the A2 chili peppers problem
+    Dictionary<string,decimal> FlowerPrices = new Dictionary<string, decimal>()
+    {
+        {"Roses", 4.00M },
+        {"Sunflowers", 6.00M},
+        {"Tulips", 3.50M }
+    };
+    FlowerPrices["Pink Roses"] = 5.00M;
+
+}
+
+@{
+    ViewData["Title"] = "Buy Now!";
+}
+<h1>Order Some flowers!</h1>
+
+<!-- Ask the user what kinds of flowers they buy -->
+<form method="POST" action="/Flower/OrderSummary">
+    <div>
+        <label for="OrderAddress">Order Address:</label>
+        <input type="text" name="OrderAddress" id="OrderAddress" />
+    </div>
+    <div>
+        <label for="NumFlowers">Number of Flowers:</label>
+        <input type="number" name="NumFlowers" id="NumFlowers" />
+    </div>
+    <div>
+        <label for="FlowerType">Type:</label>
+        <div>
+
+            @foreach (KeyValuePair<string,decimal> FlowerPrice in FlowerPrices)
+            {
+                <input type="radio" name="FlowerType" id="@FlowerPrice.Key" value="@FlowerPrice.Key" />
+                <label for="@FlowerPrice.Key">@FlowerPrice.Key ($@FlowerPrice.Value ea)</label>
+                <br />
+            }
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Order Now" />
+    </div>
+
+</form>
