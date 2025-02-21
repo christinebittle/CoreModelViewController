@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "5125";
+    string StoreOwner = "Gary";
+    // The secret discount code is LUVCHOCOLATE. Sever comments are not visible
+    DateTime CurrentDate = DateTime.Now;
+
+}
+<!--
+The secret discount code is VALENTINE. HTML Comments are visible
+-->
+<h1>Welcome to the Valentines' 
+    Chocolate Store!</h1>
+<p>The owner of this store is @StoreOwner.
+    The store was founded @CurrentDate.ToString("yyyy-MM-dd")</p>
+
+    <style>
+        #chocolatenav li{display:block;}
+    </style>
+    <nav id="chocolatenav">
+        <ul>
+            <li><a href="/Chocolate/Order">Buy some chocolate now!</a></li>
+            <li><a href="/Chocolate/Terms">Terms and Conditions</a></li>
+        </ul>
+
+    </nav>
+ 
+
+ 

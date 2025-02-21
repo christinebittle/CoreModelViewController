@@ -109,5 +109,27 @@ namespace CoreModelViewController.Controllers
             return View(NewCandyOrder);
         }
 
+
+        // GET : /Candy/Terms
+        public IActionResult Terms()
+        {
+
+            StoreLegal CandyTerms = new StoreLegal();
+            // terms version 4
+            CandyTerms.Version = 4;
+           
+            CandyTerms.Terms = new List<string>();
+            CandyTerms.Terms.Add("Refund if not opened");
+            // terms have storage of order receipts
+            CandyTerms.Terms.Add("Storage of customer information for receipts");
+
+            //last updated 2016
+            CandyTerms.LastUpdated = DateTime.Parse("2016-01-01");
+
+
+            // Directs to /Views/Candy/Terms.cshtml
+            return View(CandyTerms);
+        }
+
     }
 }

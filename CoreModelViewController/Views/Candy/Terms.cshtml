@@ -1,0 +1,13 @@
+﻿@model CoreModelViewController.Models.StoreLegal
+
+<h2>Candy Page Terms #@(Model.Version)</h2>
+
+<p>By purchasing candy, you agree to the following terms:</p>
+
+<ul>
+    @foreach(string Term in Model.Terms){
+        <li>@Term</li>
+    }
+</ul>
+
+<p><em>Last Updated @Model.LastUpdated.ToString("yyyy-MM-dd")</em></p>

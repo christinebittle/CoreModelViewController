@@ -1,0 +1,18 @@
+﻿@model CoreModelViewController.Models.ChocolateOrder
+
+<h1>The Summary of our Order #@Model.OrderId</h1>
+
+
+<p>
+    The name of the customer is @Model.CustomerName
+</p>
+<p>
+    The box size is @Model.BoxSize
+</p>
+<p>
+    The box colour is @Model.BoxColour
+</p>
+<hr />
+<p>Sub total is $@Model.SubTotal</p>
+<p>Tax is $@Model.TaxAmount @Model.TaxLabel</p>
+<p>Total @Model.OrderTotal</p>

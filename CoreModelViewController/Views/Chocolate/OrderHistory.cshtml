@@ -1,0 +1,13 @@
+﻿@model IEnumerable<CoreModelViewController.Models.ChocolateOrder>
+
+<h2>Order History</h2>
+
+<!-- loop through orders -->
+@foreach(ChocolateOrder order in Model){
+    <div>
+        <h3>OrderID: #@order.OrderId</h3>
+        <p>Name: @order.CustomerName</p>
+        <p>Total Amount: $@order.OrderTotal</p>
+    </div>
+}
+

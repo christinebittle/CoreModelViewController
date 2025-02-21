@@ -1,0 +1,11 @@
+﻿@model CoreModelViewController.Models.StoreLegal
+
+
+<h2>Terms and Conditions v@(Model.Version)</h2>
+<p>By using this store, you agree to the following terms:</p>
+<ol>
+    @foreach(string Term in Model.Terms){
+        <li>@Term</li>
+    }
+</ol>
+<p>Last Updated: @Model.LastUpdated.ToString("yyyy-MM-dd")</p>
