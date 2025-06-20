@@ -1,0 +1,16 @@
+﻿@model IEnumerable<CoreModelViewController.Models.PopscicleOrder>
+
+<h2>Popscicle Order Admin Page</h2>
+<p>There are @Model.Count() orders</p>
+
+<table>
+    <tr><td>Name</td><td>Flavor</td><td>Unit Cost</td><td>Amt</td><td>Total</td></tr>
+@foreach(PopscicleOrder order in Model)
+{
+        <tr><td>@order.CustomerName</td>
+            <td>@order.PopscicleFlavor</td>
+            <td>@order.PopscicleCost</td>
+            <td>@order.PopscicleAmt</td>
+            <td>@order.OrderTotal</td></tr>
+}
+</table>

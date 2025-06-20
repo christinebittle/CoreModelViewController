@@ -1,9 +1,9 @@
-﻿
+﻿@model CoreModelViewController.Models.PopscicleOrder
 <h2>Order Summary</h2>
 
-<p>Name: @ViewData["CustomerName"]</p>
-<p># Popscicles: @ViewData["NumPopscicles"]</p>
-<p>Flavor Order: @ViewData["IceCreamFlavor"]</p>
-<p>Order SubTotal: $@ViewData["Subtotal"]</p>
-<p>HST : $@ViewData["HstAmt"] (@ViewData["HstRate"])</p>
-<p>Total: $@ViewData["OrderTotal"]</p>
+<p>Name: @Model.CustomerName</p>
+<p># Popscicles: @Model.PopscicleAmt</p>
+<p>Flavor Order: @Model.PopscicleFlavor</p>
+<p>Order SubTotal: $@Model.OrderSubtotal</p>
+<p>HST : @Model.OrderTaxLabel @Model.OrderTaxAmt (@Model.OrderTaxRate%) </p>
+<p>Total: $@Model.OrderTotal</p>
