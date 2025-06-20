@@ -41,8 +41,7 @@ namespace CoreModelViewController.Controllers
            
             Order1.OrderTaxRate = 0.13M;
             Order1.OrderTaxLabel = "HST";
-            Order1.OrderTaxAmt = Order1.OrderSubtotal * Order1.OrderTaxRate;
-            Order1.OrderTotal = Order1.OrderTaxAmt + Order1.OrderSubtotal;
+            
 
             PopscicleOrder Order2 = new PopscicleOrder();
             Order2.CustomerName = "Sean";
@@ -52,8 +51,7 @@ namespace CoreModelViewController.Controllers
             
             Order2.OrderTaxRate = 0.13M;
             Order2.OrderTaxLabel = "HST";
-            Order2.OrderTaxAmt = Order2.OrderSubtotal * Order2.OrderTaxRate;
-            Order2.OrderTotal = Order2.OrderTaxAmt + Order2.OrderSubtotal;
+           
 
             PopscicleOrder Order3 = new PopscicleOrder();
             Order3.CustomerName = "Bernie";
@@ -63,8 +61,7 @@ namespace CoreModelViewController.Controllers
             
             Order3.OrderTaxRate = 0.13M;
             Order3.OrderTaxLabel = "HST";
-            Order3.OrderTaxAmt = Order3.OrderSubtotal * Order3.OrderTaxRate;
-            Order3.OrderTotal = Order3.OrderTaxAmt + Order3.OrderSubtotal;
+            
 
             List<PopscicleOrder> Orders = new List<PopscicleOrder>();
             Orders.Add(Order1); // Christine's order
@@ -99,8 +96,7 @@ namespace CoreModelViewController.Controllers
             
             NewOrder.OrderTaxRate = 0.13M;
             NewOrder.OrderTaxLabel = "HST";
-            NewOrder.OrderTaxAmt = NewOrder.OrderSubtotal * NewOrder.OrderTaxRate;
-            NewOrder.OrderTotal = NewOrder.OrderTaxAmt + NewOrder.OrderSubtotal;
+            
 
             // Directs to /Views/SummerStore/Checkout.cshtml with NewOrder Object
             return View(NewOrder);

@@ -26,13 +26,19 @@
         public decimal OrderTaxRate { get; set; }
 
         // order tax amount
-        public decimal OrderTaxAmt { get; set; }
+        public decimal OrderTaxAmt
+        { 
+            get { return OrderSubtotal * OrderTaxRate; } 
+        }
 
         // order tax label
         public string OrderTaxLabel { get; set; }
 
         // order total
-        public decimal OrderTotal { get; set; }
+        public decimal OrderTotal
+        {
+            get { return OrderSubtotal + OrderTaxAmt; }
+        }
 
     }
 }
