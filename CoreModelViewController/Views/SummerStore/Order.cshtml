@@ -1,0 +1,44 @@
+﻿
+<h2>Order some sweet treats</h2>
+
+@{
+    // associate the keys of ice cream flavors to values of their text
+    // C - Chocolate
+    // O - Orange
+    // S - Strawberry
+    // V - Vanilla
+    // A flat list, no associative key
+    // List<string> Flavors = new List<string>() {"Chocolate", "Strawberry", "Vanilla", "Orange" };
+
+    Dictionary<string, string> Flavors = new Dictionary<string, string>() { };
+    Flavors.Add("C", "Chocolate");
+    Flavors.Add("O", "Orange");
+    Flavors.Add("S", "Strawberry");
+    Flavors.Add("V", "Vanilla");
+
+}
+
+<form method="POST" action="/SummerStore/Checkout">
+    <div>
+        <label for="CustomerName">Name:</label>
+        <input type="text" name="CustomerName" id="CustomerName" />
+    </div>
+    <div>
+        <label for="NumPopscicles">Popscicles ($0.50 ea):</label>
+        <input type="number" name="NumPopscicles" id="NumPopscicles"/>
+    </div>
+    <div>
+        <label for="IceCreamFlavor">Popscicle Flavor</label>
+        <select name="IceCreamFlavor" id="IceCreamFlavor">
+            @foreach(KeyValuePair<string,string> Flavor in Flavors)
+            {
+                <option value="@Flavor.Key">@Flavor.Value</option>
+            }
+        </select>
+    </div>
+    <div>
+
+        <input type="submit" value="Order Now" />
+    </div>
+
+</form>
