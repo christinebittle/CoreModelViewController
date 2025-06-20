@@ -1,0 +1,24 @@
+﻿<h1>Welcome to the summer store!!</h1>
+<p>This is a store for selling sweet treats</p>
+@{
+
+    //This is now a C# comment, because it is written with a CSharp code block
+    string StoreOwner = "Gary";
+    DateTime Today = DateTime.Now;
+    string OrderURL = "/SummerStore/Order";
+
+    string ClassName = "5125";
+}
+<!-- HTML COMMENT
+    use a server instruction to render the following:
+    the name of the store owner
+    the time
+    the link to get to our order page -->
+
+<p>The store owner is @StoreOwner. The date is @Today.ToString("yyyy-MM-dd H")</p>
+<a href="@OrderURL">Buy Summer Treats Now!</a>
+
+<script>
+    //alert("@ClassName");
+
+</script>
